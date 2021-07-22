@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/app.css">
+    <title>Home</title>
+</head>
+<body>
+    <nav id="navbar">
+        <ul class="nav-ul">
+            <li class="nav-item"><a href="/">Home</a></li>
+            <li class="nav-item"><a href="/">About</a></li>
+            <li class="nav-item"><a href="/">Create</a></li>
+            <li class="nav-item"><a href="/">Contact Us</a></li>
+        </ul>
+        <ul class="nav-ul">
+            <%if(!currentUser){%>
+                <li class="nav-item"><a href="/login">Login</a></li>
+                <li class="nav-item"><a href="/register">Sign Up</a></li>
+            <%} else {%>
+                <li class="nav-item"><a href="/logout">Logout</a></li>
+            <% } %>
+        </ul>
+    </nav>
+    
+
+    <main>
+        <% if(currentUser){ %>
+            <h2>Hi <%=currentUser.username%></h2>
+        <%}%>
+        <a href="/new" class="new-btn">Post Story</a>
+        <section class="sec-1-stories">
+            <% for(let item of stories) { %> 
+                <div class="story">
+                    <h2><%= item.title %> </h2>
+                    <div class="story-top">
+                        <span><%= item.date.toLocaleDateString() %></span>
+                        <span><%= item.author %></span>
+                    </div>
+                    <div class="story-text">
+                        <%= item.text %>
+                    </div>
+                </div>
+            <% } %> 
+        </section>
+    </main>
+</body>
+</html>
