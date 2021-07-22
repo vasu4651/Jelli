@@ -28,16 +28,16 @@
 
     <main>
         <% if(currentUser){ %>
-            <h2>Hi <%=currentUser.username%></h2>
+            <h2>Hi <%=currentUser.name%></h2>
         <%}%>
-        <a href="/new" class="new-btn">Post Story</a>
+        <a href="/postStory" class="new-btn">Post Story</a>
         <section class="sec-1-stories">
             <% for(let item of stories) { %> 
                 <div class="story">
                     <h2><%= item.title %> </h2>
                     <div class="story-top">
                         <span><%= item.date.toLocaleDateString() %></span>
-                        <span><%= item.author %></span>
+                        <span>-@<%= item.author %></span>
                     </div>
                     <div class="story-text">
                         <%= item.text %>

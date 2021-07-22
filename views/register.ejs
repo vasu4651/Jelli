@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/app.css">
+    <link rel="stylesheet" href="../assets/register.css">
     <title>Sign Up</title>
 </head>
+
 <body>
     <nav id="navbar">
         <ul class="nav-ul">
@@ -19,23 +22,28 @@
             <%if(!currentUser){%>
                 <li class="nav-item"><a href="/login">Login</a></li>
                 <li class="nav-item"><a href="/register">Sign Up</a></li>
-            <%} else {%>
-                <li class="nav-item"><a href="/logout">Logout</a></li>
-            <% } %>
+                <%} else {%>
+                    <li class="nav-item"><a href="/logout">Logout</a></li>
+                    <% } %>
         </ul>
     </nav>
 
     <main>
-        <h2>Sign Up here</h2>
-        <form action="/register" method="POST">
+        <form action="/register" method="POST" class="card-div">
+            <h2>Sign Up here</h2>
+            <% if(typeof msg!= 'undefined'){ %>
+                    <div class="error-msg"><%=msg%></div>
+            <%}%>
             <input type="email" name="email" placeholder="Email Id">
-            <input type="text" name="username" placeholder="Username">
+            <input type="text" name="name" placeholder="Name">
             <input type="password" name="password" placeholder="Password">
+            <input type="password" name="password2" placeholder="Re-enter the password">
             <button>Sign Up</button>
         </form>
-    <main>
+        <main>
 
 
 
 </body>
+
 </html>

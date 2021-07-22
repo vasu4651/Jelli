@@ -4,11 +4,13 @@
   "description": "blog type website",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "ejs": "^3.1.6",
