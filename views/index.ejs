@@ -8,23 +8,7 @@
     <title>Home</title>
 </head>
 <body>
-    <nav id="navbar">
-        <ul class="nav-ul">
-            <li class="nav-item"><a href="/">Home</a></li>
-            <li class="nav-item"><a href="/">About</a></li>
-            <li class="nav-item"><a href="/">Create</a></li>
-            <li class="nav-item"><a href="/">Contact Us</a></li>
-        </ul>
-        <ul class="nav-ul">
-            <%if(!currentUser){%>
-                <li class="nav-item"><a href="/login">Login</a></li>
-                <li class="nav-item"><a href="/register">Sign Up</a></li>
-            <%} else {%>
-                <li class="nav-item"><a href="/logout">Logout</a></li>
-            <% } %>
-        </ul>
-    </nav>
-    
+    <%- include('partials/navbar.ejs') %> 
 
     <main>
         <% if(currentUser){ %>

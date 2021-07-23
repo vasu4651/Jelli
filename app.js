@@ -101,13 +101,10 @@ app.post('/register', async (req, res)=> {
     }
 
     // now check if same email exists in the database
-    User.findOne({email: email})
-        .then( (user)=> {
-            if(user)
-                return res.render('register.ejs', {msg:'User with this email already exists'});
-        })
+    let user1 = await User.findOne({email: email});
+    if(user1)
+        return res.render('register.ejs', {msg:'User with this email already exists'});
 
-    // console.log(newUser);
     const hash = await bcrypt.hash(password, 12);
     const newUser = new User({
         email,
@@ -116,12 +113,13 @@ app.post('/register', async (req, res)=> {
     });
     console.log(newUser);
     await newUser.save();
-    res.redirect('/');
+    req.flash('success', 'Successfully signed up!! \n Login to continue');
+    res.redirect('/login');
 });
     
 
 app.get('/login', (req, res)=> {
-    res.render('login.ejs');
+    res.render('login.ejs', {flashMsg: req.flash('success'), errorMsg: req.flash().error});
 })
 
 // login handle
@@ -129,7 +127,7 @@ app.post('/login', (req, res, next)=> {
     passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/login',
-        failureFlash: true
+        failureFlash: 'Username or password incorrect!!'
     })(req, res, next);
 });
 
