@@ -62,15 +62,24 @@ body{
 }
 
 .story{
-    width: 60%;
-    height: 249px;
-    margin: 2rem 5rem;
+    width: 650px;
+    min-height: 150px;
+    max-height: 750px;
+    margin: 2rem auto;
+    /* text-align: center; */
+    /* margin: auto; */
     padding: 1rem 1rem;
     border: 1px solid black;
     border-radius: 3px;
     background-color: rgba(59, 158, 197, 0.16);
 
 }
+
+.story-image{
+    width: 100%;
+    height: auto;
+}
+
 
 .story h2{
     padding: 0.5rem 0px;

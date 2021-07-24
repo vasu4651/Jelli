@@ -13,9 +13,13 @@
     
 
     <main>
-        <form action="/postStory" method="POST">
+        <form action="/postStory" method="POST" enctype="multipart/form-data">
             <input name="title" type="text" placeholder="Title" required>
             <textarea name="text" id="" cols="30" rows="10" placeholder="Write content here" required></textarea>
+            <div class="form-group-image">
+                <input type="file" name="image" id="post-image">
+                <label for="post-image">Choose a photo</label>
+            </div>
             <button class="btn">Post</button>
         </form>
     </main>

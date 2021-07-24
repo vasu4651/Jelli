@@ -10,6 +10,9 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const bcrypt = require('bcryptjs');
+const multer  = require('multer')
+const {storage} = require('./config/cloudinary');
+const upload = multer({ storage });
 
 // CONNECTING TO MONGOOSE
 const db = require('./config/keys').MongoURI;
@@ -44,6 +47,11 @@ app.use(flash());
 app.use('/assets', express.static('assets'))  // to serve css
 app.use(express.urlencoded({extended: false}));
 // var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+// dotenv setup
+if(process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
 
 
 // setting up global variables for ejs files
@@ -143,13 +151,19 @@ app.get('/postStory', ensureAuthenticated, (req, res)=> {
 })
 
 // handle post new story request
-app.post('/postStory', async (req, res)=> {
+app.post('/postStory', upload.single('image'), async (req, res)=> {
     const {title, text} = req.body;
     const myData = new Story({
         title,
         author: req.user.name,
-        text
+        text,
+        image : {
+            url: req.file.path,
+            filename: req.file.filename
+        }
     });
+    // myData.image.url = req.file.path;
+    // myData.image.filename = req.file.filename;
     await myData.save();
     console.log(myData);
     res.redirect('/');
