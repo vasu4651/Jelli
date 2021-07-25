@@ -66,7 +66,7 @@ function ensureAuthenticated(req, res, next) {
     if(req.isAuthenticated()) {
         return next();
     }
-    req.flash('error_msg', 'Please log in first');
+    req.flash('error', 'Please log in first');
     res.redirect('/login');
 }
 
@@ -127,7 +127,7 @@ app.post('/register', async (req, res)=> {
     
 
 app.get('/login', (req, res)=> {
-    res.render('login.ejs', {flashMsg: req.flash('success'), errorMsg: req.flash().error});
+    res.render('login.ejs', {flashMsg: req.flash('success'), errorMsg: req.flash('error') , errorMsg2: req.flash().error});
 })
 
 // login handle

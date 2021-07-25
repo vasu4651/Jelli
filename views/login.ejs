@@ -13,8 +13,11 @@
     <% if(flashMsg!= ''){ %>     <!-- here it is a flash message -->
         <div class="success-msg"><%=flashMsg%></div>
     <%}%>
-    <% if(typeof errorMsg!= 'undefined'){ %>     <!-- here it is a flash message but from passport so idk ... -->
+    <% if(errorMsg!= ''){ %>     <!-- here it is a flash message -->
         <div class="error-msg"><%=errorMsg%></div>
+    <%}%>
+    <% if(typeof errorMsg2!= 'undefined'){ %>     <!-- here it is a flash message but from passport so idk ... -->
+        <div class="error-msg"><%=errorMsg2%></div>
     <%}%>
     <main>
         <form action="/login" method="POST" class="card-div">

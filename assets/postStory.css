@@ -31,18 +31,17 @@ input:focus, textarea:focus{
 }
 
 .form-group-image{
-    width: 120px;
+    width: 520px; /* 120px */
     text-align: center;
-    height: 30px;
+    height: 50px;  /* 30px */
     padding: 5px;
     background-color: rgb(176, 207, 37);
-    /* border: 1px solid black; */
     border-radius: 5px;
 }
 
-#post-image{
+/* #post-image{
     display: none;
-}
+} */
 
 label{
     cursor: pointer;

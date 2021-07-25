@@ -18,7 +18,9 @@
         <section class="sec-1-stories">
             <% for(let item of stories) { %> 
                 <div class="story">
-                    <img class="story-image" src="<%=item.image.url%>" alt="">
+                    <% if(item.image.url) {%>
+                        <img class="story-image" src="<%=item.image.url%>" alt="">
+                    <% }%>
                     <h2><%= item.title %> </h2>
                     <div class="story-top">
                         <span><%= item.date.toLocaleDateString() %></span>
