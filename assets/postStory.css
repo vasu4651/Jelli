@@ -1,10 +1,12 @@
 form{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
+    padding-left: 60px;
     width: 60%;
-    height: 66vh;
+    height: 80vh;
     margin: auto;
     background-color: #1d577d4a;
     border: 1px solid rgb(0, 0, 0);
@@ -30,20 +32,56 @@ input:focus, textarea:focus{
     cursor: pointer;
 }
 
+
+
+
+.image-super{
+    display: flex;
+    align-items: flex-end;
+}
+
+
 .form-group-image{
-    width: 520px; /* 120px */
+    width: 150px; /* 120px */
     text-align: center;
-    height: 50px;  /* 30px */
+    height: 30px;  /* 30px */
     padding: 5px;
     background-color: rgb(176, 207, 37);
     border-radius: 5px;
+    font-size: 1.1rem;
 }
 
-/* #post-image{
+#post-image{
     display: none;
-} */
+}
 
 label{
     cursor: pointer;
+
+}
+
+.image-preview-container{
+    width: 280px;
+    height: 180px;
+    border: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    /* display: none; */
+
+}
+
+.image-preview-container span{
+    color: #ddd;
+    font-size: 1.2rem;
+}
+
+.image-preview-container img{
+    max-height: 100%;
+    width: 95%;
+    object-fit: contain;
+    display: none;
+    /* background-color: #fff; */
 
 }

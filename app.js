@@ -157,15 +157,17 @@ app.post('/postStory', upload.single('image'), async (req, res)=> {
         title,
         author: req.user.name,
         text,
-        image : {
-            url: req.file.path,
-            filename: req.file.filename
-        }
+        // image : {
+        //     url: req.file.path,
+        //     filename: req.file.filename
+        // }
     });
-    // myData.image.url = req.file.path;
-    // myData.image.filename = req.file.filename;
+    if(req.file){
+        myData.image.url = req.file.path;
+        myData.image.filename = req.file.filename;
+    }
     await myData.save();
-    console.log(myData);
+    // console.log(myData);
     res.redirect('/');
 });
 
