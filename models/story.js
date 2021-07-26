@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./user');
 
 const storySchema = new mongoose.Schema({
     title: {
@@ -20,6 +21,10 @@ const storySchema = new mongoose.Schema({
     image: {
         url: String,
         filename: String
+    },
+    user: {
+        type: mongoose.Schema.ObjectId, 
+        ref: 'User'
     }
 })
 

@@ -13,7 +13,7 @@
 <body>
     <%- include('partials/navbar.ejs') %>
         <main>
-            <form action="/postStory" method="POST" enctype="multipart/form-data">
+            <form class="form-1" action="/postStory" method="POST" enctype="multipart/form-data">
                 <input name="title" type="text" placeholder="Title" required>
                 <textarea name="text" id="" cols="30" rows="10" placeholder="Write content here" required></textarea>
                 <div class="image-super">
@@ -30,7 +30,7 @@
             </form>
         </main>
 
-        <script>
+        <script>  // this is just for image preview feature
             const inpFile = document.querySelector('#post-image');
             const frame = document.querySelector('#frame');
             inpFile.addEventListener("change", () => {

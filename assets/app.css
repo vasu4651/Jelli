@@ -85,7 +85,16 @@ body{
     padding: 0.5rem 0px;
 }
 
+.more-own-posts{
+    margin-top: 15px;    
+}
 
+.edit-post{
+    background-color: #1cad2d;
+    text-decoration: none;
+    color: white;
+    padding: 5px 8px;
+}
 
 
 /* FOOTER  */

@@ -13,6 +13,8 @@ const bcrypt = require('bcryptjs');
 const multer  = require('multer')
 const {storage} = require('./config/cloudinary');
 const upload = multer({ storage });
+var methodOverride = require('method-override')
+app.use(methodOverride('_method'))
 
 // CONNECTING TO MONGOOSE
 const db = require('./config/keys').MongoURI;
@@ -46,7 +48,7 @@ app.use(flash());
 // EXPRESS ENCODING RELATED OR MIDDLEWARE
 app.use('/assets', express.static('assets'))  // to serve css
 app.use(express.urlencoded({extended: false}));
-// var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // dotenv setup
 if(process.env.NODE_ENV !== "production") {
@@ -80,7 +82,7 @@ function ensureAuthenticated(req, res, next) {
 // ENDPOINTS
 app.get('/', async (req, res) => {
     const stories = await Story.find().sort({date: 'desc'});
-    res.render('index.ejs', {stories});
+    res.render('index.ejs', {stories, flashMsg: req.flash('success')});
 });
 
 app.get('/register', (req, res)=> {
@@ -88,7 +90,7 @@ app.get('/register', (req, res)=> {
 })
 
 
-/// register handle
+// register handle
 app.post('/register', async (req, res)=> {
     const {email, name, password, password2} = req.body;
 
@@ -153,26 +155,57 @@ app.get('/postStory', ensureAuthenticated, (req, res)=> {
 // handle post new story request
 app.post('/postStory', upload.single('image'), async (req, res)=> {
     const {title, text} = req.body;
+    const user = req.user;
     const myData = new Story({
         title,
-        author: req.user.name,
+        author: user.name,
         text,
         // image : {
         //     url: req.file.path,
         //     filename: req.file.filename
         // }
+        user: user
     });
     if(req.file){
         myData.image.url = req.file.path;
         myData.image.filename = req.file.filename;
     }
     await myData.save();
-    // console.log(myData);
+    user.stories.unshift(myData);
+    await user.save();
     res.redirect('/');
 });
 
 
+app.get('/myProfile', ensureAuthenticated, async (req, res)=> {
+    const user = req.user;
+    await user.populate('stories').execPopulate(); // since populate should be after then or somethn like that 
+                                                    // so we require to put execPopulate(), found on stack overflow
+    res.render('myProfile.ejs', {user});
+})
 
+app.get('/edit/:postId', ensureAuthenticated, async (req, res)=> {
+    const {postId} = req.params;
+    const post = await Story.findOne({_id: postId});
+    if(JSON.stringify(post.user) !== JSON.stringify(req.user._id)) { // checking if post belongs to the logged in user
+        return res.send("You can't modify other user's post");
+    }
+    res.render('edit.ejs', {post});
+})
+
+app.put('/edit/:postId', ensureAuthenticated, async (req, res)=> {
+    const {postId} = req.params;
+    const {title, text} = req.body;
+    const post = await Story.findOne({_id: postId});
+    if(JSON.stringify(post.user) !== JSON.stringify(req.user._id)) { // checking if post belongs to the logged in user
+        return res.send("You can't modify other user's post");
+    }
+    post.title = title;
+    post.text = text;
+    await post.save();
+    req.flash('success', 'Successfully Updated');
+    res.redirect('/');
+})
 
 
 

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Story = require('./story');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -16,7 +17,8 @@ const userSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    stories: [{type: mongoose.Schema.Types.ObjectId, ref:'Story'}]
 });
 
 

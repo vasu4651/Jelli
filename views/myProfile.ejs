@@ -5,21 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/app.css">
+    <link rel="stylesheet" href="../assets/myProfile.css">
     <title>Home</title>
 </head>
 <body>
     <%- include('partials/navbar.ejs') %> 
 
     <main>
-        <% if(currentUser){ %>
-            <h2>Hi <%=currentUser.name%></h2>
-        <%}%>
-        <a href="/postStory" class="new-btn">New Post</a>
-        <% if(flashMsg!= ''){ %>     <!-- here it is a flash message -->
-            <div class="success-msg"><%=flashMsg%></div>
-        <%}%>
-        <section class="sec-1-stories">
-            <% for(let item of stories) { %> 
+        <section class="personal-details">
+            <h2>Name : <%=user.name%></h2>
+            <h2>Account Created : <%=user.date.toLocaleDateString()%></h2>
+            <h2>Email Id : <%=user.email%></h2>
+        </section>
+        <%if(user.stories.length){%>
+            <h1>Posts you have created </h1>
+            <%console.log(user.stories)%>
+            <%for(let item of user.stories){%>
                 <div class="story">
                     <% if(item.image.url) {%>
                         <img class="story-image" src="<%=item.image.url%>" alt="">
@@ -32,14 +33,26 @@
                     <div class="story-text">
                         <%= item.text %>
                     </div>
-                    <%if(currentUser && (JSON.stringify(item.user) == JSON.stringify(currentUser._id))){%>
-                        <div class="more-own-posts">
-                            <a class="edit-post" href="/edit/<%=item._id%>">Edit</a>
-                        </div>
-                    <%}%>
+                    <div class="more-own-posts">
+                        <a class="edit-post" href="/edit/<%=item._id%>">Edit</a>
+                    </div>
                 </div>
-            <% } %> 
-        </section>
+            <% } %>
+        <% } %>
     </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
