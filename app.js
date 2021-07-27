@@ -11,7 +11,7 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const bcrypt = require('bcryptjs');
 const multer  = require('multer')
-const {storage} = require('./config/cloudinary');
+const {storage, cloudinary} = require('./config/cloudinary');
 const upload = multer({ storage });
 var methodOverride = require('method-override')
 app.use(methodOverride('_method'))
@@ -207,6 +207,20 @@ app.put('/edit/:postId', ensureAuthenticated, async (req, res)=> {
     res.redirect('/');
 })
 
+
+app.delete('/delete/:postId', ensureAuthenticated, async (req, res)=> {
+    const {postId} = req.params;
+    const post = await Story.findOne({_id: postId});
+    if(JSON.stringify(post.user) !== JSON.stringify(req.user._id)) { // checking if post belongs to the logged in user
+        return res.send("You can't delete other user's post");
+    }
+    if(post.image.filename) {
+        await cloudinary.uploader.destroy(post.image.filename);
+    }
+    await Story.findByIdAndDelete(postId);
+    req.flash('success', 'Successfully Deleted');
+    res.redirect('/');
+})
 
 
 // LISTENING TO THE SERVER

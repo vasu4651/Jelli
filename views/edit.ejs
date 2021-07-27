@@ -14,17 +14,6 @@
     You cant remove the photo if it was there unless you add another photo and then remove it -->
     <%- include('partials/navbar.ejs') %> 
     <main>
-        <h1>Edit your post</h1>
-            <form class="form-1" action="/edit/<%=post._id%>?_method=PUT" method="POST">
-                <input name="title" type="text" placeholder="Title" required value="<%=post.title%>">
-                <textarea name="text" id="" cols="30" rows="10" placeholder="Write content here" required><%=post.text%></textarea>
-                <div class="btns">
-                    <button class="update-btn">Update</button>
-                        
-                        <a class="delete-btn" href="">Delete Post</a>
-                </div>
-            </form>
-
         <div class="story">
             <% if(post.image.url) {%>
                 <img class="story-image" src="<%=post.image.url%>" alt="">
@@ -38,6 +27,19 @@
                 <%= post.text %>
             </div>
         </div>
+
+        <h1>Edit your post</h1>
+        <form class="form-1" action="/edit/<%=post._id%>?_method=PUT" method="POST">
+            <input name="title" type="text" placeholder="Title" required value="<%=post.title%>">
+            <textarea name="text" id="" cols="30" rows="10" placeholder="Write content here" required><%=post.text%></textarea>
+            <div class="btns">
+                <button class="update-btn">Update</button>   
+                <label class="delete-btn" for="delete-btn">Delete Post</label> <!-- i like this technique -->
+            </div>
+        </form>
+        <form action="/delete/<%=post._id%>?_method=DELETE" method="POST">
+            <button id="delete-btn" type="submit" style="display: none;">Delete Post</button>
+        </form>
     </main>
 </body>
 </html>
