@@ -1,0 +1,50 @@
+.story{
+    width: 650px;
+    min-height: 150px;
+    /* max-height: 1000px; */
+    margin: 2rem auto;
+    /* text-align: center;  */
+    padding: 0rem 0rem;
+    border: 1px solid hsl(309, 4%, 66%);
+    border-radius: 3px;
+    background-color: #e4cbde;
+
+}
+
+.story-top{
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    /* background-color: #b7c3f3; */
+}
+
+.story-image{
+    max-height: 550px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.story-details{
+    margin: 0px 17px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+
+.story h2{
+    padding: 0.5rem 0px;
+    font-size: 1.3rem;
+}
+
+.more-own-posts{
+    margin-top: 15px;    
+}
+
+.edit-post{
+    /* background-color: pink; */
+    text-decoration: none;
+    background-color: #ff499e;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+}

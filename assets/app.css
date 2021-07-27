@@ -6,95 +6,56 @@
 
 body{
     min-height: 100vh;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-between; */
-    background-image: url('https://wallpaperaccess.com/full/1251302.jpg');
+    /* background-color: rgb(187, 197, 52); */
+    background-image: url('https://t4.ftcdn.net/jpg/02/83/13/61/360_F_283136113_b3VRHNiOPFMOluzYJPpfuoH8Czh9c743.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
-    /* background-attachment: fixed; */
-    backdrop-filter: blur(30px);
+    background-size: 100%;
+    background-attachment: fixed;
+    backdrop-filter: blur(10px);
 }
 
-#navbar{
-    background-color: #1f4954d9;
-    margin-bottom: 45px;
-    display: flex;
-    justify-content: space-between;
-}
-
-#navbar ul{
-    height: 85px;
+.main{
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    margin: 0px 100px;
 }
 
-#navbar ul:nth-child(1){
-    flex-basis: 30%;
+
+
+/* SECTION 1 */
+
+
+/* SECTION 2 */
+.sec-2-side-panel{
+    width: 400px;
+    height: 500px;
+    position: sticky;
+    top: 170px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: #72ddf7;
+    border-radius: 5px;
+    padding: 2rem;
 }
 
-#navbar ul:nth-child(2){
-    flex-basis: 10%;
-}
-
-#navbar li{
-    list-style: none;
-}
-
-#navbar a{
-    text-decoration: none;
+.greeting{
     color: aliceblue;
+    margin-bottom: 20px;
 }
-
-/* SECTION */
 
 .new-btn{
     color: black;
     text-decoration: none;
-    background-color: #1cad2d;
-    padding: 0.5rem 0.75rem;
-    position: relative;
-    left: 58.5%;
+    background-color: #00cc99;
+    padding: 0.5rem 0.7rem;
+    width: 90px;
     border-radius: 3px;
     cursor: pointer;
     border: none;
 }
 
-.story{
-    width: 650px;
-    min-height: 150px;
-    /* max-height: 1000px; */
-    margin: 2rem auto;
-    /* text-align: center;  */
-    padding: 1rem 1rem;
-    border: 1px solid black;
-    border-radius: 3px;
-    background-color: rgba(59, 158, 197, 0.16);
 
-}
-
-.story-image{
-    max-height: 550px;
-    width: 100%;
-    object-fit: contain;
-}
-
-
-.story h2{
-    padding: 0.5rem 0px;
-}
-
-.more-own-posts{
-    margin-top: 15px;    
-}
-
-.edit-post{
-    background-color: #1cad2d;
-    text-decoration: none;
-    color: white;
-    padding: 5px 8px;
-}
 
 
 /* FOOTER  */
@@ -109,7 +70,7 @@ body{
 
 }
 
-/* for login */
+/* flash messages */
 .success-msg{
     text-align: center;
     background-color: greenyellow;

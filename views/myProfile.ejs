@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/navbar.css">
     <link rel="stylesheet" href="../assets/app.css">
+    <link rel="stylesheet" href="../assets/story.css">
     <link rel="stylesheet" href="../assets/myProfile.css">
     <title>Home</title>
 </head>
@@ -22,19 +24,21 @@
             <%console.log(user.stories)%>
             <%for(let item of user.stories){%>
                 <div class="story">
+                    <div class="story-top">
+                        <span>@<%= item.author %></span>
+                        <span>-<%= item.date.toLocaleDateString() %></span>
+                    </div>
                     <% if(item.image.url) {%>
                         <img class="story-image" src="<%=item.image.url%>" alt="">
                     <% }%>
-                    <h2><%= item.title %> </h2>
-                    <div class="story-top">
-                        <span><%= item.date.toLocaleDateString() %></span>
-                        <span>-@<%= item.author %></span>
-                    </div>
-                    <div class="story-text">
-                        <%= item.text %>
-                    </div>
-                    <div class="more-own-posts">
-                        <a class="edit-post" href="/edit/<%=item._id%>">Edit</a>
+                    <div class="story-details">
+                        <h2><%= item.title %> </h2>
+                        <div class="story-text">
+                            <%= item.text %>
+                        </div>
+                        <div class="more-own-posts">
+                            <a class="edit-post" href="/edit/<%=item._id%>">Edit</a>
+                        </div>
                     </div>
                 </div>
             <% } %>

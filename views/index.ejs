@@ -5,41 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/app.css">
+    <link rel="stylesheet" href="../assets/navbar.css">
+    <link rel="stylesheet" href="../assets/story.css">
     <title>Home</title>
 </head>
 <body>
     <%- include('partials/navbar.ejs') %> 
 
-    <main>
-        <% if(currentUser){ %>
-            <h2>Hi <%=currentUser.name%></h2>
-        <%}%>
-        <a href="/postStory" class="new-btn">New Post</a>
-        <% if(flashMsg!= ''){ %>     <!-- here it is a flash message -->
-            <div class="success-msg"><%=flashMsg%></div>
-        <%}%>
+        
+    <% if(flashMsg!= ''){ %>     <!-- here it is a flash message -->
+        <div class="success-msg"><%=flashMsg%></div>
+    <%}%>
+    <main class="main">
         <section class="sec-1-stories">
             <% for(let item of stories) { %> 
                 <div class="story">
+                    <div class="story-top">
+                        <span>@<%= item.author %></span>
+                        <span>-<%= item.date.toLocaleDateString() %></span>
+                    </div>
                     <% if(item.image.url) {%>
                         <img class="story-image" src="<%=item.image.url%>" alt="">
                     <% }%>
-                    <h2><%= item.title %> </h2>
-                    <div class="story-top">
-                        <span><%= item.date.toLocaleDateString() %></span>
-                        <span>-@<%= item.author %></span>
-                    </div>
-                    <div class="story-text">
-                        <%= item.text %>
-                    </div>
-                    <%if(currentUser && (JSON.stringify(item.user) == JSON.stringify(currentUser._id))){%>
-                        <div class="more-own-posts">
-                            <a class="edit-post" href="/edit/<%=item._id%>">Edit</a>
+                    <div class="story-details">
+                        <h2><%= item.title %> </h2>
+                        <div class="story-text">
+                            <%= item.text %>
                         </div>
-                    <%}%>
+                        <%if(currentUser && (JSON.stringify(item.user) == JSON.stringify(currentUser._id))){%>
+                            <div class="more-own-posts">
+                                <a class="edit-post" href="/edit/<%=item._id%>"><i class="fas fa-edit"></i></a>
+                            </div>
+                        <%}%>
+                    </div>
                 </div>
             <% } %> 
         </section>
+
+        <section class="sec-2-side-panel">
+            <% if(currentUser){ %>
+                <h2 class="greeting">Hi <%=currentUser.name%></h2>
+            <%}%>
+            <a href="/postStory" class="new-btn">New Post</a>
+        </section>
     </main>
+
+    <script src="https://kit.fontawesome.com/3a105db922.js" crossorigin="anonymous"></script>
+    <script>
+        window.addEventListener('scroll' , () => {
+            let navbar = document.querySelector('#navbar');
+            navbar.classList.toggle('scroll-active' , window.scrollY > 0);
+        })
+    </script>
+
 </body>
 </html>

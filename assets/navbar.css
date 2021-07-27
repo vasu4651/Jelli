@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&family=Lobster&family=Staatliches&display=swap');
+
+#navbar{
+    background-color: #ff499e;
+    margin-bottom: 45px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 200px;
+    position: sticky;
+    top: 0%;
+}
+
+#navbar ul{
+    height: 85px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#logo{
+    font-size: 2.6rem;
+    font-weight: bold;
+    font-family: 'Lobster', cursive;
+    letter-spacing: 6px;
+}
+
+#navbar ul:nth-child(2) li{
+    padding: 0px 20px;
+}
+
+li{
+    list-style: none;
+    font-family: cursive;
+}
+
+
+#navbar a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.scroll-active{
+    background-color: #ff499e;
+}

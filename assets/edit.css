@@ -1,15 +1,43 @@
-body{
-    min-height: 900px;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.form-1{
-    height: 500px;
+h1{
+    text-align: center;
 }
+
+.story{
+    background-color: rgba(235, 186, 220, 0.678);
+}
+
+body{
+    height: 1000px;
+}
+
+input, textarea{
+    width: 70%;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+input{
+    margin: 10px 0px;
+}
+
+input:focus, textarea:focus{
+    outline: none;
+}
+
+
 
 .update-btn{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: rgb(45, 204, 72);
     padding: 6px 18px;
+    margin: 20px 20px;
     font-size: 1.1rem;
     border: none;
     border-radius: 5px;
@@ -28,3 +56,5 @@ body{
     border: none;
     cursor: pointer;
 }
+
+
