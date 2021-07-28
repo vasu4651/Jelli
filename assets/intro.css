@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&family=Lobster&family=Staatliches&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /* height: 100vh; */
+    background-image: url('https://img.freepik.com/free-photo/various-sweet-candies-forming-frame-pink-background_23-2147921695.jpg?size=626&ext=jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(10px);
+    
+}
+
+main{
+    /* min-height: 230px; */
+    padding: 0px 0px;
+}
+
+.wrap{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 100px;
+    height: 700px;
+
+}
+
+.intro-image{
+    width: 400px;
+    background-image: url('https://www.pharmaceutical-technology.com/wp-content/uploads/sites/10/2021/03/Social-media.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(2px);
+    /* opacity: 0.8; */
+    margin-right: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    /* border: 10px solid #504a4f; */
+    
+}
+
+img{
+    width: 100%;
+
+}
+
+#logo{
+    color: #e643c2;
+    text-shadow: 10px 10px 8px black;
+    font-size: 10rem;
+    font-weight: bold;
+    font-family: 'Lobster', cursive;
+    letter-spacing: 6px;
+    transform: rotate(-15deg);
+    position: absolute;
+    right: 730px;
+    top: 280px;
+
+}
+
+
+.intro-card{
+    border-radius: 5px;
+    background-color: rgba(241, 28, 145, 0.911);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 175px;
+    padding-top: 70px;
+    /* border: 1px solid grey; */
+
+}
+
+
+a{
+    text-decoration: none;
+    width: 70%;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 80px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-weight: bolder; */
+    padding: 10px 30px;
+    color: black;
+    font-size: 1.2rem;
+    background-color: greenyellow;
+    transition: all .2s;
+}
+
+a:nth-of-type(2){
+    background-color: rgb(23, 179, 218);
+}
+
+a:nth-of-type(3){
+    background-color: rgb(238, 48, 48);
+}
+
+a:hover{
+    background-color: white;
+    color: black;
+}
+
+.intro-card div{
+    text-align: center;
+    padding: 0px 30px;
+    font-family: cursive;
+    font-size: 1.4rem;
+    color: white;
+}

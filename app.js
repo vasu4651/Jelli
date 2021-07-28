@@ -80,7 +80,12 @@ function ensureAuthenticated(req, res, next) {
 
 
 // ENDPOINTS
-app.get('/', async (req, res) => {
+
+app.get('/', (req, res)=> {
+    res.render('intro.ejs');
+})
+
+app.get('/home', async (req, res) => {
     const stories = await Story.find().sort({date: 'desc'});
     res.render('index.ejs', {stories, flashMsg: req.flash('success')});
 });
@@ -135,7 +140,7 @@ app.get('/login', (req, res)=> {
 // login handle
 app.post('/login', (req, res, next)=> {
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/home',
         failureRedirect: '/login',
         failureFlash: 'Username or password incorrect!!'
     })(req, res, next);
@@ -143,7 +148,7 @@ app.post('/login', (req, res, next)=> {
 
 app.get('/logout', (req, res)=> {
     req.logout();
-    res.redirect('/');
+    res.redirect('/home');
 })
 
 
@@ -173,7 +178,7 @@ app.post('/postStory', upload.single('image'), async (req, res)=> {
     await myData.save();
     user.stories.unshift(myData);
     await user.save();
-    res.redirect('/');
+    res.redirect('/home');
 });
 
 
@@ -204,7 +209,7 @@ app.put('/edit/:postId', ensureAuthenticated, async (req, res)=> {
     post.text = text;
     await post.save();
     req.flash('success', 'Successfully Updated');
-    res.redirect('/');
+    res.redirect('/home');
 })
 
 
@@ -219,7 +224,7 @@ app.delete('/delete/:postId', ensureAuthenticated, async (req, res)=> {
     }
     await Story.findByIdAndDelete(postId);
     req.flash('success', 'Successfully Deleted');
-    res.redirect('/');
+    res.redirect('/home');
 })
 
 
