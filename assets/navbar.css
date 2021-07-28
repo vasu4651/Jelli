@@ -27,6 +27,15 @@ li{
     font-family: cursive;
 }
 
+a{
+    color: aliceblue;
+    text-decoration: none;
+    transition: all .2s;
+}
+
+a:hover{
+    color: black;
+}
 
 
 .anchor-tag{
@@ -47,6 +56,8 @@ li{
     font-family: 'Lobster', cursive;
     letter-spacing: 6px;
 }
+
+
 
 
 
