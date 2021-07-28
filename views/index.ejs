@@ -48,6 +48,10 @@
                 <h2 class="greeting">Hi <%=currentUser.name%></h2>
             <%}%>
             <a href="/postStory" class="new-btn">New Post</a>
+            <div class="quotes-text">
+                <!-- " Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, quaerat. Tenetur dignissimos reiciendis, porro fuga est magni quisquam cupiditate commodi! Libero fugit et doloremque sit at, mollitia delectus a aliquid. "-->
+            </div>
+            
         </section>
     </main>
 
@@ -57,11 +61,29 @@
     <script>
         window.addEventListener('scroll' , () => {
             let sidePanel = document.querySelector('.sec-2-side-panel');
-            if(window.scrollY <= (document.body.offsetHeight)/1.11)
+            if(window.scrollY <= (document.body.offsetHeight)/1.3)
                 sidePanel.style.position = 'sticky';
-            if(window.scrollY > (document.body.offsetHeight)/1.11)
+            if(window.scrollY > (document.body.offsetHeight)/1.3)
                 sidePanel.style.position = 'relative';
         })
+
+        async function updateQuote() {
+            const quotesText = document.querySelector('.quotes-text');
+            // const response = await fetch('https://api.quotable.io/tags')
+            const response = await fetch('https://api.quotable.io/random?tags=happiness|life|friendship')
+            const data = await response.json()
+            quotesText.innerHTML = `"${data.content}"<i class="fas fa-sync-alt refresh" onclick="updateQuote()"></i>`;
+            // console.log(data);
+        }
+
+        window.addEventListener('load', async ()=> {
+            updateQuote();
+        })
+
+        // const refresh = document.querySelector('.refresh');
+        // refresh.addEventListener('click', updateQuote());
+
+
     </script>
 
 </body>

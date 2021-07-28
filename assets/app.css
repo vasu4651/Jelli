@@ -50,10 +50,12 @@ body{
 
 .new-btn{
     color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-decoration: none;
     background-color: #00cc99;
     padding: 0.5rem 0.7rem;
-    width: 100px;
+    margin-top: 20px;
+    width: 105px;
     border-radius: 3px;
     cursor: pointer;
     border: none;
@@ -66,7 +68,19 @@ body{
     background-color: #485458;
 }
 
+.quotes-text{
+    font-family: cursive;
+    font-size: 1.2rem;
+    margin-top: 50px;
+    text-align: center;
+    line-height: 40px;
+}
 
+.refresh{
+    margin-left: 10px;
+    color: greenyellow;
+    cursor: pointer;
+}
 
 
 
