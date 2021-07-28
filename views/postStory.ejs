@@ -8,47 +8,51 @@
     <link rel="stylesheet" href="../assets/app.css">
     <link rel="stylesheet" href="../assets/navbar.css">
     <link rel="stylesheet" href="../assets/postStory.css">
+    <link rel="stylesheet" href="../assets/footer.css">
     <title>Home</title>
 </head>
 
 <body>
     <%- include('partials/navbar.ejs') %>
-        <main>
-            <form class="form-1" action="/postStory" method="POST" enctype="multipart/form-data">
-                <input name="title" type="text" placeholder="Title" required>
-                <textarea name="text" id="" cols="30" rows="10" placeholder="Write content here" required></textarea>
-                <div class="image-super">
-                    <div class="image-preview-container">
-                        <span>Image Preview</span>
-                        <img id="frame" src="">
-                    </div>
-                    <div class="form-group-image">
-                        <input type="file" name="image" id="post-image">
-                        <label for="post-image">Choose a photo</label>
-                    </div>
+    <main>
+        <form class="form-1" action="/postStory" method="POST" enctype="multipart/form-data">
+            <input name="title" type="text" placeholder="Title" required>
+            <textarea name="text" id="" cols="30" rows="10" placeholder="Write content here" required></textarea>
+            <div class="image-super">
+                <div class="image-preview-container">
+                    <span>Image Preview</span>
+                    <img id="frame" src="">
                 </div>
-                <button class="btn">Post</button>
-            </form>
-        </main>
+                <div class="form-group-image">
+                    <input type="file" name="image" id="post-image">
+                    <label for="post-image">Choose a photo</label>
+                </div>
+            </div>
+            <button class="btn">Post</button>
+        </form>
+    </main>
+    <%- include('partials/footer.ejs') %> 
 
-        <script>  // this is just for image preview feature
-            const inpFile = document.querySelector('#post-image');
-            const frame = document.querySelector('#frame');
-            inpFile.addEventListener("change", () => {
-                const file = event.target.files[0];
-                if(file) {
-                    console.log('file is there');
-                    document.querySelector('.image-preview-container span').style.display = 'none';
-                    document.querySelector('.image-preview-container img').style.display = 'block';
-                    frame.src = URL.createObjectURL(file);
-                }
-                else{
-                    document.querySelector('.image-preview-container img').style.display = 'none';
-                    document.querySelector('.image-preview-container span').style.display = 'block';
-                    console.log('no file is there');
-                }
-            })
-        </script>
+    <script src="https://kit.fontawesome.com/3a105db922.js" crossorigin="anonymous"></script>
+
+    <script>  // this is just for image preview feature
+        const inpFile = document.querySelector('#post-image');
+        const frame = document.querySelector('#frame');
+        inpFile.addEventListener("change", () => {
+            const file = event.target.files[0];
+            if(file) {
+                console.log('file is there');
+                document.querySelector('.image-preview-container span').style.display = 'none';
+                document.querySelector('.image-preview-container img').style.display = 'block';
+                frame.src = URL.createObjectURL(file);
+            }
+            else{
+                document.querySelector('.image-preview-container img').style.display = 'none';
+                document.querySelector('.image-preview-container span').style.display = 'block';
+                console.log('no file is there');
+            }
+        })
+    </script>
 </body>
 
 </html>

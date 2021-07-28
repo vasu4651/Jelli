@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../assets/app.css">
     <link rel="stylesheet" href="../assets/story.css">
     <link rel="stylesheet" href="../assets/myProfile.css">
+    <link rel="stylesheet" href="../assets/footer.css">
     <title>Home</title>
 </head>
 <body>
@@ -16,11 +17,11 @@
     <main>
         <section class="personal-details">
             <h2>Name : <%=user.name%></h2>
-            <h2>Account Created : <%=user.date.toLocaleDateString()%></h2>
+            <h2>Jonied us at : <%=user.date.toLocaleDateString()%></h2>
             <h2>Email Id : <%=user.email%></h2>
         </section>
         <%if(user.stories.length){%>
-            <h1>Posts you have created </h1>
+            <h1 class="created-heading">Posts you have created </h1>
             <%console.log(user.stories)%>
             <%for(let item of user.stories){%>
                 <div class="story">
@@ -32,31 +33,20 @@
                         <img class="story-image" src="<%=item.image.url%>" alt="">
                     <% }%>
                     <div class="story-details">
-                        <h2><%= item.title %> </h2>
+                        <h2 class="story-title"><%= item.title %> </h2>
+                        <div class="more-own-posts">
+                            <a class="edit-post" href="/edit/<%=item._id%>"><i class="fas fa-edit"></i></a>
+                        </div>
                         <div class="story-text">
                             <%= item.text %>
-                        </div>
-                        <div class="more-own-posts">
-                            <a class="edit-post" href="/edit/<%=item._id%>">Edit</a>
                         </div>
                     </div>
                 </div>
             <% } %>
         <% } %>
     </main>
+    <%- include('partials/footer.ejs') %> 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <script src="https://kit.fontawesome.com/3a105db922.js" crossorigin="anonymous"></script>
 </body>
 </html>

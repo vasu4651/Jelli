@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/app.css">
     <link rel="stylesheet" href="../assets/navbar.css">
     <link rel="stylesheet" href="../assets/story.css">
+    <link rel="stylesheet" href="../assets/footer.css">
     <title>Home</title>
 </head>
 <body>
@@ -28,15 +29,15 @@
                         <img class="story-image" src="<%=item.image.url%>" alt="">
                     <% }%>
                     <div class="story-details">
-                        <h2><%= item.title %> </h2>
-                        <div class="story-text">
-                            <%= item.text %>
-                        </div>
+                        <h2 class="story-title"><%= item.title %> </h2>
                         <%if(currentUser && (JSON.stringify(item.user) == JSON.stringify(currentUser._id))){%>
                             <div class="more-own-posts">
                                 <a class="edit-post" href="/edit/<%=item._id%>"><i class="fas fa-edit"></i></a>
                             </div>
                         <%}%>
+                        <div class="story-text">
+                            <%= item.text %>
+                        </div>
                     </div>
                 </div>
             <% } %> 
@@ -50,11 +51,16 @@
         </section>
     </main>
 
+    <%- include('partials/footer.ejs') %> 
+
     <script src="https://kit.fontawesome.com/3a105db922.js" crossorigin="anonymous"></script>
     <script>
         window.addEventListener('scroll' , () => {
-            let navbar = document.querySelector('#navbar');
-            navbar.classList.toggle('scroll-active' , window.scrollY > 0);
+            let sidePanel = document.querySelector('.sec-2-side-panel');
+            if(window.scrollY <= (document.body.offsetHeight)/1.11)
+                sidePanel.style.position = 'sticky';
+            if(window.scrollY > (document.body.offsetHeight)/1.11)
+                sidePanel.style.position = 'relative';
         })
     </script>
 

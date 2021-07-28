@@ -8,7 +8,7 @@
     width: 60%;
     height: 80vh;
     margin: auto;
-    background-color: rgba(235, 186, 220, 0.678);
+    background-color: #f0eff4;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 3px;
 }
@@ -24,7 +24,7 @@ input:focus, textarea:focus{
 }
 
 .btn{
-    background-color: rgb(45, 204, 72);
+    background-color: #00cc99;
     padding: 6px 20px;
     font-size: 1.1rem;
     border: none;
@@ -46,7 +46,7 @@ input:focus, textarea:focus{
     text-align: center;
     height: 30px;  /* 30px */
     padding: 5px;
-    background-color: rgb(176, 207, 37);
+    background-color: #ffd400;
     border-radius: 5px;
     font-size: 1.1rem;
 }
@@ -63,7 +63,7 @@ label{
 .image-preview-container{
     width: 280px;
     height: 180px;
-    border: 2px solid #ddd;
+    border: 2px solid rgb(165, 160, 160);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,7 +73,7 @@ label{
 }
 
 .image-preview-container span{
-    color: #ddd;
+    color: rgb(165, 160, 160);
     font-size: 1.2rem;
 }
 

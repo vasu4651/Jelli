@@ -3,3 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.personal-details{
+    background-color: cornflowerblue;
+    width: 600px;
+    height: 300px;
+    margin: 50px 100px;
+    
+}
+
+.created-heading{
+    padding: 30px 90px;
+    padding-bottom: 0px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2.4rem;
+    border-top: 1px solid rgb(124, 119, 119);
+    width: 90%;
+    margin: 50px;
+}

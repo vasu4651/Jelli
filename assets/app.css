@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -23,10 +25,13 @@ body{
 
 
 /* SECTION 1 */
-
+.sec-1-stories{
+    padding-bottom: 100px;
+}
 
 /* SECTION 2 */
 .sec-2-side-panel{
+    color: #000;
     width: 400px;
     height: 500px;
     position: sticky;
@@ -40,7 +45,6 @@ body{
 }
 
 .greeting{
-    color: aliceblue;
     margin-bottom: 20px;
 }
 
@@ -49,26 +53,22 @@ body{
     text-decoration: none;
     background-color: #00cc99;
     padding: 0.5rem 0.7rem;
-    width: 90px;
+    width: 100px;
     border-radius: 3px;
     cursor: pointer;
     border: none;
+    font-size: 1.2rem;
+    transition: all 0.2s;
+}
+
+.new-btn:hover{
+    color: aliceblue;
+    background-color: #485458;
 }
 
 
 
 
-/* FOOTER  */
-.footer{
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    letter-spacing: 1px;
-    background-color:rgb(48, 187, 145);
-
-}
 
 /* flash messages */
 .success-msg{

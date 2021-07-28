@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Style+Script&display=swap');
+
 .story{
+    /* color: whitesmoke; */
     width: 650px;
     min-height: 150px;
     /* max-height: 1000px; */
@@ -7,7 +10,7 @@
     padding: 0rem 0rem;
     border: 1px solid hsl(309, 4%, 66%);
     border-radius: 3px;
-    background-color: #e4cbde;
+    background-color: #f0eff4;
 
 }
 
@@ -15,6 +18,7 @@
     padding: 10px 15px;
     font-size: 1rem;
     font-weight: bold;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     /* background-color: #b7c3f3; */
 }
 
@@ -28,6 +32,17 @@
     margin: 0px 17px;
     margin-bottom: 10px;
     font-size: 1rem;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.story-title{
+    flex-basis: 90%;
+}
+
+.story-text{
+    flex-basis: 90%;
 }
 
 
@@ -43,8 +58,15 @@
 .edit-post{
     /* background-color: pink; */
     text-decoration: none;
-    background-color: #ff499e;
-    color: white;
-    padding: 5px;
+    background-color: #8eaca498;
+    color: black;
+    padding: 4px;
     border-radius: 4px;
+    position: relative;
+    left: 15px;
+    transition: all .2s;
+}
+
+.edit-post:hover{
+    color: rgb(108, 122, 122);
 }
