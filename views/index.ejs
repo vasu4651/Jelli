@@ -22,15 +22,16 @@
             <% for(let item of stories) { %> 
                 <div class="story">
                     <div class="story-top">
-                        <span>@<%= item.author %></span>
-                        <span>-<%= item.date.toLocaleDateString() %></span>
+                        <span class="story-top-span-one"><img src="<%=item.user.image.url%>" alt=""></span>
+                        <span><%= item.author %></span>
+                        <span><%= item.date.toLocaleDateString() %></span>
                     </div>
                     <% if(item.image.url) {%>
                         <img class="story-image" src="<%=item.image.url%>" alt="">
                     <% }%>
                     <div class="story-details">
                         <h2 class="story-title"><%= item.title %> </h2>
-                        <%if(currentUser && (JSON.stringify(item.user) == JSON.stringify(currentUser._id))){%>
+                        <%if(currentUser && (JSON.stringify(item.user._id) == JSON.stringify(currentUser._id))){%>
                             <div class="more-own-posts">
                                 <a class="edit-post" href="/edit/<%=item._id%>"><i class="fas fa-edit"></i></a>
                             </div>

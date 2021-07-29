@@ -87,7 +87,10 @@ app.get('/', (req, res)=> {
 
 app.get('/home', async (req, res) => {
     const stories = await Story.find().sort({date: 'desc'});
-    res.render('index.ejs', {stories, flashMsg: req.flash('success')});
+    for(let item of stories) {
+        await item.populate('user').execPopulate(); 
+    }
+    res.render('index.ejs', {stories, flashMsg: req.flash('success'), User});
 });
 
 app.get('/register', (req, res)=> {
@@ -126,7 +129,7 @@ app.post('/register', async (req, res)=> {
         name,
         password: hash
     });
-    console.log(newUser);
+    // console.log(newUser);
     await newUser.save();
     req.flash('success', 'Successfully signed up!! \n Login to continue');
     res.redirect('/login');
@@ -158,17 +161,13 @@ app.get('/postStory', ensureAuthenticated, (req, res)=> {
 })
 
 // handle post new story request
-app.post('/postStory', upload.single('image'), async (req, res)=> {
+app.post('/postStory', upload.single('image'), ensureAuthenticated, async (req, res)=> {
     const {title, text} = req.body;
     const user = req.user;
     const myData = new Story({
         title,
         author: user.name,
         text,
-        // image : {
-        //     url: req.file.path,
-        //     filename: req.file.filename
-        // }
         user: user
     });
     if(req.file){
@@ -180,6 +179,24 @@ app.post('/postStory', upload.single('image'), async (req, res)=> {
     await user.save();
     res.redirect('/home');
 });
+
+// Profile Picture
+app.post('/myProfile', upload.single('image'), ensureAuthenticated, async (req, res)=> {
+    let user = req.user;
+    // console.log("kkkk", req.file);
+    if(req.file) {
+        if(user.image.filename) {
+            await cloudinary.uploader.destroy(user.image.filename);
+        }
+        user.image.url = req.file.path;
+        user.image.filename = req.file.filename;
+        await user.save();
+    }
+    else {
+        console.log('Not success');
+    }
+    res.redirect('/myProfile');
+})
 
 
 app.get('/myProfile', ensureAuthenticated, async (req, res)=> {

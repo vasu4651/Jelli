@@ -16,18 +16,49 @@
 
     <main>
         <section class="personal-details">
-            <h2>Name : <%=user.name%></h2>
-            <h2>Jonied us at : <%=user.date.toLocaleDateString()%></h2>
-            <h2>Email Id : <%=user.email%></h2>
+
+            <section class="image-section sec-one">
+                <div id="profile-picture-container">
+                    <img src="<%=currentUser.image.url%>" alt="">
+                </div>
+                <button id="change-image-btn">Change Image</button>
+            </section>
+                
+            <section class="image-section sec-two">
+                <form action="/myProfile" method="POST" enctype="multipart/form-data">
+                    <div class="image-super">
+                        <div class="image-preview-container">
+                            <span>Image Preview</span>
+                            <img id="frame" src="">
+                        </div>
+                        <div class="form-group-image">
+                            <input type="file" name="image" id="post-image">
+                        </div>
+                    </div>
+                    <label for="post-image">Choose a photo</label>
+                    <button id="submit-image-btn">Submit</button>
+                    <button type="button" id="cancel-image-btn">Cancel</button>
+                </form>
+            </section>
+
+            <section class="name-section">
+                <h2><%=user.name%></h2>
+                <h2>Created Posts: <%=user.stories.length%></h2>
+                <h2>Jonied us at : <%=user.date.toLocaleDateString()%></h2>
+            </section>
+
         </section>
+
+
         <%if(user.stories.length){%>
-            <h1 class="created-heading">Posts you have created </h1>
+            <h1 class="created-heading">Posts you have created :</h1>
             <%console.log(user.stories)%>
             <%for(let item of user.stories){%>
                 <div class="story">
                     <div class="story-top">
-                        <span>@<%= item.author %></span>
-                        <span>-<%= item.date.toLocaleDateString() %></span>
+                        <span class="story-top-span-one"><img src="<%=currentUser.image.url%>" alt=""></span>
+                        <span><%= item.author %></span>
+                        <span><%= item.date.toLocaleDateString() %></span>
                     </div>
                     <% if(item.image.url) {%>
                         <img class="story-image" src="<%=item.image.url%>" alt="">
@@ -48,5 +79,54 @@
     <%- include('partials/footer.ejs') %> 
 
     <script src="https://kit.fontawesome.com/3a105db922.js" crossorigin="anonymous"></script>
+    <script>  // this is just for image preview feature
+        const inpFile = document.querySelector('#post-image');
+        const frame = document.querySelector('#frame');
+        const cancelBtn = document.querySelector('#cancel-image-btn');
+        const changeBtn = document.querySelector('#change-image-btn');
+        const secOne = document.querySelector('.sec-one');
+        const secTwo = document.querySelector('.sec-two');
+
+
+        inpFile.addEventListener("change", () => {
+            const file = event.target.files[0];
+            if(file) {
+                console.log('file is there');
+                document.querySelector('.image-preview-container span').style.display = 'none';
+                document.querySelector('.image-preview-container img').style.display = 'block';
+                frame.src = URL.createObjectURL(file);
+            }
+            else{
+                document.querySelector('.image-preview-container img').style.display = 'none';
+                document.querySelector('.image-preview-container span').style.display = 'block';
+                console.log('no file is there');
+            }
+        })
+
+
+        cancelBtn.addEventListener("click", () => {
+            console.log('cancl');
+            secTwo.style.display = 'none';
+            secOne.style.display = 'block';
+        })
+        
+        changeBtn.addEventListener("click", () => {
+            secOne.style.display = 'none';
+            secTwo.style.display = 'block';
+        })
+
+
+        
+
+
+
+
+
+
+
+
+
+
+    </script>
 </body>
 </html>

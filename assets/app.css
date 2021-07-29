@@ -60,7 +60,7 @@ body{
     cursor: pointer;
     border: none;
     font-size: 1.2rem;
-    transition: all 0.2s;
+    transition: all 0.15s;
 }
 
 .new-btn:hover{
@@ -77,9 +77,15 @@ body{
 }
 
 .refresh{
-    margin-left: 10px;
-    color: greenyellow;
+    margin-left: 20px;
+    color: rgb(60, 78, 32);
     cursor: pointer;
+    transition: all 0.15s;
+}
+
+.refresh:hover{
+    /* color: #050505; */
+    transform: scale(1.4);
 }
 
 

@@ -19,8 +19,9 @@
         <h1>Edit your post</h1>
         <div class="story">
             <div class="story-top">
-                <span>@<%= post.author %></span>
-                <span>-<%= post.date.toLocaleDateString() %></span>
+                <span class="story-top-span-one"><img src="<%=currentUser.image.url%>" alt=""></span>
+                <span><%= post.author %></span>
+                <span><%= post.date.toLocaleDateString() %></span>
             </div>
             <% if(post.image.url) {%>
                 <img class="story-image" src="<%=post.image.url%>" alt="">

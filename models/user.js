@@ -2,6 +2,13 @@ const mongoose = require('mongoose');
 const Story = require('./story');
 
 const userSchema = new mongoose.Schema({
+    image: {
+        url: {
+            type: String,
+            default: 'https://res.cloudinary.com/devhkdc68/image/upload/v1627571293/Jellii/default-profile-picture_ieoftu.jpg'
+        },
+        filename: String
+    },
     name: {
         type: String,
         required: true
